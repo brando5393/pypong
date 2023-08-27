@@ -21,6 +21,5 @@ while game_is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_is_running = False
-    window.fill((0, 0, 0))  # Clear the screen
     pygame.draw.circle(window, ball_color, (ball_x, ball_y), ball_radius)
-    pygame.display.flip()
+    pygame.display.update()

@@ -175,4 +175,10 @@ while game_is_running:
         left_paddle_x, left_paddle_y, PADDLE_WIDTH, PADDLE_HEIGHT))
     pygame.draw.rect(window, paddle_color, pygame.Rect(
         right_paddle_x, right_paddle_y, PADDLE_WIDTH, PADDLE_HEIGHT))
+    if left_powerup == 1:
+        pygame.draw.circle(
+            window, CYAN, (left_paddle_x + 10, left_paddle_y + 10), 4)
+    if right_powerup == 1:
+        pygame.draw.circle(
+            window, CYAN, (right_paddle_x + 10, right_paddle_y + 10), 4)
     pygame.display.update()

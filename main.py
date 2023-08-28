@@ -50,6 +50,13 @@ game_is_running = True
 ball_direction = [0, 1]
 ball_angle = [0, 1, 2]
 
+# powerups
+left_powerup = right_powerup = 0
+# total available powerups
+left_powerup_total = right_powerup_total = 5
+# paddle smash
+
+
 # main game loop
 while game_is_running:
     window.fill(BLACK)
@@ -61,10 +68,14 @@ while game_is_running:
                 right_paddle_speed = -0.9
             if event.key == pygame.K_DOWN:
                 right_paddle_speed = 0.9
+            if event.key == pygame.K_RIGHT and right_powerup_total > 0:
+                right_powerup = 1
             if event.key == pygame.K_w:
                 left_paddle_speed = -0.9
             if event.key == pygame.K_s:
                 left_paddle_speed = 0.9
+            if event.key == pygame.K_d and left_powerup_total > 0:
+                left_powerup = 1
 
         if event.type == pygame.KEYUP:
             right_paddle_speed = 0
@@ -133,6 +144,26 @@ while game_is_running:
         if right_paddle_y <= ball_y <= right_paddle_y + PADDLE_HEIGHT:
             ball_x = right_paddle_x
             ball_speed_x *= -1
+
+    # active powerups
+
+    # smash left paddle
+    if left_powerup == 1:
+        if left_paddle_x <= ball_x <= left_paddle_x + PADDLE_WIDTH:
+            if left_paddle_y <= ball_y <= left_paddle_y + PADDLE_HEIGHT:
+                ball_x = left_paddle_x + PADDLE_WIDTH
+                ball_speed_x *= -3.5
+                left_powerup = 0
+                left_powerup_total -= 1
+
+    # smash right paddle
+    if right_powerup == 1:
+        if right_paddle_x <= ball_x <= right_paddle_x + PADDLE_WIDTH:
+            if right_paddle_y <= ball_y <= right_paddle_y + PADDLE_HEIGHT:
+                ball_x = right_paddle_x
+                ball_speed_x *= -3.5
+                right_powerup = 0
+                right_powerup_total -= 1
     # movement
     ball_x += ball_speed_x
     ball_y += ball_speed_y

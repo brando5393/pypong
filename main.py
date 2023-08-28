@@ -86,6 +86,17 @@ while game_is_running:
         right_paddle_y = WINDOW_HEIGHT - PADDLE_HEIGHT
     if right_paddle_y <= 0:
         right_paddle_y = 0
+
+    # collision detection
+    if left_paddle_x <= ball_x <= left_paddle_x + PADDLE_WIDTH and left_paddle_y <= ball_y <= left_paddle_y + PADDLE_HEIGHT:
+        if left_paddle_y <= ball_y <= left_paddle_y + PADDLE_HEIGHT:
+            ball_x = left_paddle_x + PADDLE_WIDTH
+            ball_speed_x *= -1
+
+    if right_paddle_x <= ball_x <= right_paddle_x + PADDLE_WIDTH:
+        if right_paddle_y <= ball_y <= right_paddle_y + PADDLE_HEIGHT:
+            ball_x = right_paddle_x
+            ball_speed_x *= -1
     # movement
     ball_x += ball_speed_x
     ball_y += ball_speed_y

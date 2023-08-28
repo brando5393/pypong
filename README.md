@@ -1,2 +1,2 @@
 # pypong
-Atari's arcade classics resurrected in python with some additional game play options.
+Atari's arcade classic resurrected in Python with some additional gameplay options.

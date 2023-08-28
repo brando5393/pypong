@@ -77,12 +77,6 @@ while game_is_running:
     if ball_x <= 0 + ball_radius:
         ball_x, ball_y = WINDOW_WIDTH // 2 - ball_radius, WINDOW_HEIGHT // 2 - ball_radius
         ball_speed_x, ball_speed_y = 0.7, 0.7
-    # movement
-    ball_x += ball_speed_x
-    ball_y += ball_speed_y
-    right_paddle_y += right_paddle_speed
-    left_paddle_y += left_paddle_speed
-
     # paddle movement controls
     if left_paddle_y >= WINDOW_HEIGHT - PADDLE_HEIGHT:
         left_paddle_y = WINDOW_HEIGHT - PADDLE_HEIGHT
@@ -92,6 +86,11 @@ while game_is_running:
         right_paddle_y = WINDOW_HEIGHT - PADDLE_HEIGHT
     if right_paddle_y <= 0:
         right_paddle_y = 0
+    # movement
+    ball_x += ball_speed_x
+    ball_y += ball_speed_y
+    right_paddle_y += right_paddle_speed
+    left_paddle_y += left_paddle_speed
     # OBJECTS
     pygame.draw.circle(window, ball_color, (ball_x, ball_y), ball_radius)
     pygame.draw.rect(window, paddle_color, pygame.Rect(

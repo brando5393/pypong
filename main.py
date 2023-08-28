@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -40,12 +41,14 @@ DEEP_PINK = (255, 20, 147)
 LAVENDER = (230, 230, 250)
 MINT_CREAM = (245, 255, 250)
 
-# Create the screen
+# initial values
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("pyPong")
 ball_color = WHITE
 paddle_color = WHITE
 game_is_running = True
+ball_direction = [0, 1]
+ball_angle = [0, 1, 2]
 
 # main game loop
 while game_is_running:
@@ -72,11 +75,44 @@ while game_is_running:
         ball_speed_y *= -1
     if ball_x >= WINDOW_WIDTH - ball_radius:
         ball_x, ball_y = WINDOW_WIDTH // 2 - ball_radius, WINDOW_HEIGHT // 2 - ball_radius
+        random_direction = random.choice(ball_direction)
+        random_angle = random.choice(ball_angle)
+        if random_direction == 0:
+            if random_angle == 0:
+                ball_speed_y, ball_speed_x = -1.4, 0.7
+            if random_angle == 1:
+                ball_speed_y, ball_speed_x = -0.7, 0.7
+            if random_angle == 2:
+                ball_speed_y, ball_speed_x = -0.7, 1.4
+
+        if random_direction == 1:
+            if random_angle == 0:
+                ball_speed_y, ball_speed_x = 1.4, 0.7
+            if random_angle == 1:
+                ball_speed_y, ball_speed_x = 0.7, 0.7
+            if random_angle == 2:
+                ball_speed_y, ball_speed_x = 0.7, 1.4
         ball_speed_x *= -1
-        ball_speed_y *= -1
     if ball_x <= 0 + ball_radius:
         ball_x, ball_y = WINDOW_WIDTH // 2 - ball_radius, WINDOW_HEIGHT // 2 - ball_radius
-        ball_speed_x, ball_speed_y = 0.7, 0.7
+        random_direction = random.choice(ball_direction)
+        random_angle = random.choice(ball_angle)
+        if random_direction == 0:
+            if random_angle == 0:
+                ball_speed_y, ball_speed_x = -1.4, 0.7
+            if random_angle == 1:
+                ball_speed_y, ball_speed_x = -0.7, 0.7
+            if random_angle == 2:
+                ball_speed_y, ball_speed_x = -0.7, 1.4
+
+        if random_direction == 1:
+            if random_angle == 0:
+                ball_speed_y, ball_speed_x = 1.4, 0.7
+            if random_angle == 1:
+                ball_speed_y, ball_speed_x = 0.7, 0.7
+            if random_angle == 2:
+                # ball_speed_x, ball_speed_y = 0.7, 0.7
+                ball_speed_y, ball_speed_x = 0.7, 1.4
     # paddle movement controls
     if left_paddle_y >= WINDOW_HEIGHT - PADDLE_HEIGHT:
         left_paddle_y = WINDOW_HEIGHT - PADDLE_HEIGHT

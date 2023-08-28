@@ -13,6 +13,7 @@ ball_speed_x, ball_speed_y = 0.7, 0.7
 left_paddle_y = right_paddle_y = WINDOW_HEIGHT // 2 - PADDLE_HEIGHT // 2
 left_paddle_x = 100 - PADDLE_WIDTH // 2
 right_paddle_x = WINDOW_WIDTH - (100 - PADDLE_WIDTH // 2)
+right_paddle_speed = left_paddle_speed = 0
 
 # Colors
 WHITE = (255, 255, 255)
@@ -52,6 +53,20 @@ while game_is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_is_running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                right_paddle_speed = -0.9
+            if event.key == pygame.K_DOWN:
+                right_paddle_speed = 0.9
+            if event.key == pygame.K_w:
+                left_paddle_speed = -0.9
+            if event.key == pygame.K_s:
+                left_paddle_speed = 0.9
+
+        if event.type == pygame.KEYUP:
+            right_paddle_speed = 0
+            left_paddle_speed = 0
+
     # ball movement conditions
     if ball_y <= 0 + ball_radius or ball_y >= WINDOW_HEIGHT - ball_radius:
         ball_speed_y *= -1
@@ -65,6 +80,8 @@ while game_is_running:
     # movement
     ball_x += ball_speed_x
     ball_y += ball_speed_y
+    right_paddle_y += right_paddle_speed
+    left_paddle_y += left_paddle_speed
 
     # OBJECTS
     pygame.draw.circle(window, ball_color, (ball_x, ball_y), ball_radius)

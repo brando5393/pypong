@@ -5,13 +5,13 @@ Atari's arcade classic resurrected in python with some additional gameplay optio
 ## Table of Contents
 - [Description](#description)
 - [Features](#features)
+- [System-Requirements](#System-Requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Controls](#controls)
 - [License](#license)
 
 ## Description:
-
 pyPong is a two-player Pong game built using the pygame library. It features basic paddle movement, ball collision detection, score tracking, and powerups. This was built as a code along project following the YouTube video [Pong with Python & Pygame – Tutorial](https://www.youtube.com/watch?v=tS8F7_X2qB0) from [freeCodeCamp.org](freeCodeCamp.org)
 
 All sound effects for the game were sourced from [https://soundbible.com/](https://soundbible.com/) and all credit for the sound effects goes to their respective creators. Direct links to the sound effects used are listed below:
@@ -20,7 +20,6 @@ All sound effects for the game were sourced from [https://soundbible.com/](https
 - [Flash Powerup](https://soundbible.com/2067-Blop.html)
 
 ## Features:
-
 - Two-player Pong game
 - Paddle movement using 'W'/'S' (Player 1) and arrow keys (Player 2)
 - Ball collision detection
@@ -30,8 +29,11 @@ All sound effects for the game were sourced from [https://soundbible.com/](https
 - Random ball direction and angle on score
 - Responsive UI with real-time updates
 
-## Installation:
+## System-Requirements
+- Python 3.6 or higher
+- [pygame](https://www.pygame.org/) library
 
+## Installation:
 1. Clone the repository:
 ```sh
    git clone https://github.com/brando5393/pyPong.git
@@ -45,7 +47,6 @@ All sound effects for the game were sourced from [https://soundbible.com/](https
    pip install pygame
 ```
 ## Usage:
-
 1. Run the game:
 ```sh
    python main.py
@@ -55,7 +56,6 @@ All sound effects for the game were sourced from [https://soundbible.com/](https
 3. The game window will display the player scores, powerup counts, and the Pong gameplay.
 
 ## Controls:
-
 - Player 1 (Left Paddle):
   - Move Up: 'W' key
   - Move Down: 'S' key
@@ -69,5 +69,4 @@ All sound effects for the game were sourced from [https://soundbible.com/](https
   - Flash Powerup: Left Arrow
 
 ## License:
-
 This project is licensed under the MIT License.

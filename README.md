@@ -28,7 +28,7 @@ pyPong is a two-player Pong game built using the pygame library. It features bas
 
 1. Clone the repository:
 ```sh
-   git clone https://github.com/your-username/pyPong.git
+   git clone https://github.com/brando5393/pyPong.git
 ```
 2. Navigate to the project directory:
 ```sh

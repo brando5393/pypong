@@ -35,6 +35,7 @@ pygame.display.set_caption("pyPong")
 ball_color = WHITE
 paddle_color = WHITE
 game_is_running = True
+player_1 = player_2 = 0
 ball_direction = [0, 1]
 ball_angle = [0, 1, 2]
 
@@ -42,7 +43,6 @@ ball_angle = [0, 1, 2]
 left_powerup = right_powerup = 0
 # total available powerups
 left_powerup_total = right_powerup_total = 5
-# paddle smash
 
 
 # main game loop
@@ -77,6 +77,7 @@ while game_is_running:
     if ball_y <= 0 + ball_radius or ball_y >= WINDOW_HEIGHT - ball_radius:
         ball_speed_y *= -1
     if ball_x >= WINDOW_WIDTH - ball_radius:
+        player_1 += 1
         ball_x, ball_y = WINDOW_WIDTH // 2 - ball_radius, WINDOW_HEIGHT // 2 - ball_radius
         random_direction = random.choice(ball_direction)
         random_angle = random.choice(ball_angle)
@@ -97,6 +98,7 @@ while game_is_running:
                 ball_speed_y, ball_speed_x = 0.7, 1.4
         ball_speed_x *= -1
     if ball_x <= 0 + ball_radius:
+        player_2 += 1
         ball_x, ball_y = WINDOW_WIDTH // 2 - ball_radius, WINDOW_HEIGHT // 2 - ball_radius
         random_direction = random.choice(ball_direction)
         random_angle = random.choice(ball_angle)
@@ -114,7 +116,6 @@ while game_is_running:
             if random_angle == 1:
                 ball_speed_y, ball_speed_x = 0.7, 0.7
             if random_angle == 2:
-                # ball_speed_x, ball_speed_y = 0.7, 0.7
                 ball_speed_y, ball_speed_x = 0.7, 1.4
 
     # paddle movement controls
@@ -174,6 +175,20 @@ while game_is_running:
     ball_y += ball_speed_y
     right_paddle_y += right_paddle_speed
     left_paddle_y += left_paddle_speed
+
+    # scoreboard rendering
+    SCOREBOARD_FONT = pygame.font.SysFont("arialblack", 32)
+    score_1 = SCOREBOARD_FONT.render(f"Player 1: {player_1}", True, WHITE)
+    window.blit(score_1, (25, 25))
+    score_2 = SCOREBOARD_FONT.render(f"Player 2: {player_2}", True, WHITE)
+    window.blit(score_2, (800, 25))
+    total_powerups_player_1 = SCOREBOARD_FONT.render(
+        f"Powerups: {left_powerup_total}", True, WHITE)
+    window.blit(total_powerups_player_1, (25, 65))
+    total_powerups_player_2 = SCOREBOARD_FONT.render(
+        f"Powerups: {right_powerup_total}", True, WHITE)
+    window.blit(total_powerups_player_2, (770, 65))
+
     # OBJECTS
     pygame.draw.circle(window, ball_color, (ball_x, ball_y), ball_radius)
     pygame.draw.rect(window, paddle_color, pygame.Rect(

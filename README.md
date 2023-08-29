@@ -17,7 +17,7 @@ pyPong is a two-player Pong game built using the pygame library. It features bas
 ## Features:
 
 - Two-player Pong game
-- Paddle movement using arrow keys (Player 1) and 'W'/'S' keys (Player 2)
+- Paddle movement using 'W'/'S' (Player 1) and arrow keys (Player 2)
 - Ball collision detection
 - Score tracking for both players
 - Powerup system with smash and flash powerups
@@ -51,14 +51,14 @@ pyPong is a two-player Pong game built using the pygame library. It features bas
 ## Controls:
 
 - Player 1 (Left Paddle):
-  - Move Up: Arrow Up
-  - Move Down: Arrow Down
+  - Move Up: 'W' key
+  - Move Down: 'S' key
   - Smash Powerup: 'D' key
   - Flash Powerup: 'A' key
 
 - Player 2 (Right Paddle):
-  - Move Up: 'W' key
-  - Move Down: 'S' key
+  - Move Up: Up Arrow
+  - Move Down: Down Arrow
   - Smash Powerup: Right Arrow
   - Flash Powerup: Left Arrow
 

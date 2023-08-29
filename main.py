@@ -2,6 +2,14 @@ import pygame
 import random
 
 pygame.init()
+pygame.mixer.init()
+
+BALL_HIT_SOUND = pygame.mixer.Sound(
+    "./audio/Jump-SoundBible.com-1007297584.mp3")
+SMASH_POWERUP_SOUND = pygame.mixer.Sound(
+    "./audio/Swooshing-SoundBible.com-1214884243.mp3")
+FLASH_POWERUP_SOUND = pygame.mixer.Sound(
+    "./audio/Blop-Mark_DiAngelo-79054334.mp3")
 
 # sizes and positions
 WINDOW_HEIGHT, WINDOW_WIDTH = 600, 1000
@@ -133,11 +141,13 @@ while game_is_running:
         if left_paddle_y <= ball_y <= left_paddle_y + PADDLE_HEIGHT:
             ball_x = left_paddle_x + PADDLE_WIDTH
             ball_speed_x *= -1
+            BALL_HIT_SOUND.play()
 
     if right_paddle_x <= ball_x <= right_paddle_x + PADDLE_WIDTH:
         if right_paddle_y <= ball_y <= right_paddle_y + PADDLE_HEIGHT:
             ball_x = right_paddle_x
             ball_speed_x *= -1
+            BALL_HIT_SOUND.play()
 
     # powerups
 
@@ -146,6 +156,7 @@ while game_is_running:
         if left_paddle_x <= ball_x <= left_paddle_x + PADDLE_WIDTH:
             if left_paddle_y <= ball_y <= left_paddle_y + PADDLE_HEIGHT:
                 ball_x = left_paddle_x + PADDLE_WIDTH
+                SMASH_POWERUP_SOUND.play()
                 ball_speed_x *= -3.5
                 left_powerup = 0
                 left_powerup_total -= 1
@@ -154,12 +165,14 @@ while game_is_running:
         left_paddle_y = ball_y
         left_powerup = 0
         left_powerup_total -= 1
+        FLASH_POWERUP_SOUND.play()
 
     # smash right paddle
     if right_powerup == 1:
         if right_paddle_x <= ball_x <= right_paddle_x + PADDLE_WIDTH:
             if right_paddle_y <= ball_y <= right_paddle_y + PADDLE_HEIGHT:
                 ball_x = right_paddle_x
+                SMASH_POWERUP_SOUND.play()
                 ball_speed_x *= -3.5
                 right_powerup = 0
                 right_powerup_total -= 1
@@ -169,6 +182,7 @@ while game_is_running:
         right_paddle_y = ball_y
         right_powerup = 0
         right_powerup_total -= 1
+        FLASH_POWERUP_SOUND.play()
 
     # movement
     ball_x += ball_speed_x

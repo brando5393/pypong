@@ -14,6 +14,11 @@ Atari's arcade classic resurrected in python with some additional gameplay optio
 
 pyPong is a two-player Pong game built using the pygame library. It features basic paddle movement, ball collision detection, score tracking, and powerups. This was built as a code along project following the YouTube video [Pong with Python & Pygame – Tutorial](https://www.youtube.com/watch?v=tS8F7_X2qB0) from [freeCodeCamp.org](freeCodeCamp.org)
 
+All sound effects for the game were sourced from [https://soundbible.com/](https://soundbible.com/) and all credit for the sound effects goes to their respective creators. Direct links to the sound effects used are listed below:
+- [Ball Hit](https://soundbible.com/1343-Jump.html#)
+- [Smash Powerup](https://soundbible.com/670-Swooshing.html)
+- [Flash Powerup](https://soundbible.com/2067-Blop.html)
+
 ## Features:
 
 - Two-player Pong game
@@ -21,6 +26,7 @@ pyPong is a two-player Pong game built using the pygame library. It features bas
 - Ball collision detection
 - Score tracking for both players
 - Powerup system with smash and flash powerups
+- Sound effects for ball collision, smash powerup, and flash powerup
 - Random ball direction and angle on score
 - Responsive UI with real-time updates
 
